@@ -6,7 +6,7 @@ class Node():
 
 class Double_LL():
     def __init__(self, head = None):
-        self.head = None
+        self.head = head
         self.tail = self.head
 
     def addNodeLast(self,val):
@@ -32,7 +32,8 @@ class Double_LL():
             self.tail = node
         else:
             node.right = self.head
-            self.head = node
+            self.head.left = node
+            self.head = node 
     
     def addNodeAtIndex(self, index, val):
         if index >= self._size():
@@ -46,6 +47,7 @@ class Double_LL():
         temp.left.right = node
         node.right = temp
         temp.left = node
+
             
     
     def printList(self):
@@ -72,6 +74,15 @@ class Double_LL():
             temp = temp.right
         return count
 
+    def backward_traverse(self):
+        temp = self.tail
+        print('None <- ', end = "")
+        while temp is not None:
+            print(temp.val, ' <- ', end = ' ')
+            temp = temp.left
+        print('Head')
+
+
 if __name__ == "__main__":
     newDLL = Double_LL()
     newDLL.addNodeLast(2)
@@ -80,8 +91,6 @@ if __name__ == "__main__":
     newDLL.printList()
     newDLL.addNodeStart(4)
     newDLL.printList()
-    print(newDLL.tail.val)
-    print(newDLL.head.val)
-    newDLL.addNodeAtIndex(2,88)
+    newDLL.addNodeAtIndex(3,88)
     newDLL.printList()
-    newDLL.addNodeAtIndex(9,88)
+    newDLL.backward_traverse()
