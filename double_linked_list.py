@@ -91,11 +91,7 @@ class Double_LL():
 
 
     def getSize(self):
-        count = 0
-        temp = self.head
-        while temp is not None:
-            count += 1
-            temp = temp.right
+        count = self._size()
         print('Total node in list:', count)
 
     
@@ -135,3 +131,4 @@ if __name__ == "__main__":
     newDLL.backward_traverse()
     newDLL.removeNodeAtIndex(1)
     newDLL.printList()
+    newDLL.getSize()
